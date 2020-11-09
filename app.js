@@ -1,93 +1,91 @@
-// const Manager = require("./lib/Manager");
-// const Engineer = require("./lib/Engineer");
-// const Intern = require("./lib/Intern");
+
+const Manager = require("./Develop/lib/Manager");
+const Engineer = require("./Develop/lib/Engineer");
+const Intern = require("./Develop/lib/Intern");
 const inquirer = require("inquirer");
-// const path = require("path");
+const path = require("path");
 const fs = require("fs");
-// const OUTPUT_DIR = path.resolve(__dirname, "output");
-// const outputPath = path.join(OUTPUT_DIR, "team.html");
-// const render = require("./lib/htmlRenderer");
+const OUTPUT_DIR = path.resolve(__dirname, "output");
+const outputPath = path.join(OUTPUT_DIR, "team.html");
+const render = require("./Develop/lib/htmlRenderer");
 
-// function promptUser(){
+function startPrompts(){
 
-//     inquirer.prompt([ 
-//         {
-//             type : "input",
-//             message: "What is your name?",
-//             name: "name",
-//         },
-//         {
-//             type: "list",
-//             message: "What is your role in your team?",
-//             name: "role",
-//             choices: ["Intern", "Engineer", "Manager"]
-//         }
-//     ]).then(response => {
-//         if (response.role === "Intern"){
-//             inquirer.prompt([ 
-//                 {
-//                     type : "input",
-//                     message: "What is your ID?",
-//                     name: "id",
-//                 },
-//                 {
-//                     type: "input",
-//                     message: "What is your email?", 
-//                     name: "email"
-//                 },
-//                 {
-//                     type: "input",
-//                     message: "What is your school?",
-//                     name: "school"
-//                 }
-//             ])
-//         }
-//         if(response.role === "Engineer"){
-//             inquirer.prompt([
-//                 {
-//                     type: "input",
-//                     message: "What is your ID?",
-//                     name: "id" 
-//                 },
-//                 {
-//                     type: "input",
-//                     message: "What is your email?",
-//                     name: "email",
-//                 },
-//                 {
-//                     type: "input",
-//                     message: "What is your Github username?",
-//                     name: "github"
-//                 }
-//             ])
-//         }
-//         if (response.role === "Manager"){
-//             inquirer.prompt([
-//                 {
-//                     type: "input",
-//                     message: "What is your ID?",
-//                     name: "id"
-//                 },
-//                 {
-//                     type: "input",
-//                     message: "What is your email?",
-//                     name: "email"
-//                 },
-//                 {
-//                     type: "input",
-//                     message: "What is your office number?",
-//                     name: "officeNumber"
-//                 }
-//             ]).then(response => {
+    inquirer.prompt([ 
+        {
+            type : "input",
+            message: "What is your name?",
+            name: "name",
+        },
+        {
+            type: "list",
+            message: "What is your role in your team?",
+            name: "role",
+            choices: ["Intern", "Engineer", "Manager"]
+        }
+    ]).then(response => {
+        if (response.role === "Intern"){
+            inquirer.prompt([ 
+                {
+                    type : "input",
+                    message: "What is your ID?",
+                    name: "id",
+                },
+                {
+                    type: "input",
+                    message: "What is your email?", 
+                    name: "email"
+                },
+                {
+                    type: "input",
+                    message: "What is your school?",
+                    name: "school"
+                }
+            ])
+        }
+        if(response.role === "Engineer"){
+            inquirer.prompt([
+                {
+                    type: "input",
+                    message: "What is your ID?",
+                    name: "id" 
+                },
+                {
+                    type: "input",
+                    message: "What is your email?",
+                    name: "email",
+                },
+                {
+                    type: "input",
+                    message: "What is your Github username?",
+                    name: "github"
+                }
+            ])
+        }
+        if (response.role === "Manager"){
+            inquirer.prompt([
+                {
+                    type: "input",
+                    message: "What is your ID?",
+                    name: "id"
+                },
+                {
+                    type: "input",
+                    message: "What is your email?",
+                    name: "email"
+                },
+                {
+                    type: "input",
+                    message: "What is your office number?",
+                    name: "officeNumber"
+                }
+            ])
+        }
+    }).then(response => {
+        repeat();
+    })
+}
 
-//             })
-//         }
-//     })
-
-
-// }
-
-// promptUser();
 
 function repeat(){
     inquirer.prompt([
@@ -96,20 +94,90 @@ function repeat(){
             message:"Would you like to input a team members data?",
             name:"data"
         }
-    ])
+    ]).then(response => {
+        if(response.data === true){
+            teamData()
+        }
+        else if(response.data === false){
+            console.log("Summary created!");
+        }
+    })
 }
 
-repeat();
+
+function teamData (){
+inquirer.prompt([
+    {
+        type: "list",
+        message: "What is their role?",
+        name: "teamRole",
+        choices: ["Intern", "Engineer", "Manager"]
+    },
+]).then(response => {
+    if(response.teamRole === "Intern"){
+        inquirer.prompt([
+            {
+                type: "input",
+                message: "What is their ID?",
+                name:"id"
+            },
+            {
+                type: "input",
+                message: "What is their email?",
+                name:"email"
+            },
+            {
+                type: "input",
+                message: "What is their school?",
+                name:"school"
+            },
+        ])
+    }
+    if(response.teamRole === "Engineer"){
+        inquirer.prompt([
+            {
+                type: "input",
+                message: "What is their ID?",
+                name:"id"
+            },
+            {
+                type: "input",
+                message: "What is their email?",
+                name:"email"
+            },
+            {
+                type: "input",
+                message: "What is their Github username?",
+                name:"github"
+            },
+        ])
+    }
+    if (response.teamRole === "Manager"){
+        inquirer.prompt([
+            {
+                type: "input",
+                message: "What is their ID?",
+                name:"id"
+            },
+            {
+                type: "input",
+                message: "What is their email?",
+                name:"email"
+            },
+            {
+                type: "input",
+                message: "What is their office number?",
+                name:"officeNumber"
+            },
+        ])
+    }
+})
+repeat(); 
+}
 
 
 
-
-
-
-
-
-
-
+startPrompts();
 
 
 
