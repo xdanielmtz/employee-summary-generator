@@ -119,7 +119,7 @@ function repeat(){
         }
     ]).then(response => {
         if(response.data === true){
-            console.log(true);
+            return teamData();
         }
         else if(response.data === false){
             console.log("Summary created!");
@@ -128,75 +128,80 @@ function repeat(){
 };
 
 
-// function teamData (){
-// inquirer.prompt([
-//     {
-//         type: "list",
-//         message: "What is their role?",
-//         name: "teamRole",
-//         choices: ["Intern", "Engineer", "Manager"]
-//     },
-// ]).then(response => {
-//     if(response.teamRole === "Intern"){
-//         inquirer.prompt([
-//             {
-//                 type: "input",
-//                 message: "What is their ID?",
-//                 name:"id"
-//             },
-//             {
-//                 type: "input",
-//                 message: "What is their email?",
-//                 name:"email"
-//             },
-//             {
-//                 type: "input",
-//                 message: "What is their school?",
-//                 name:"school"
-//             },
-//         ])
-//     }
-//     if(response.teamRole === "Engineer"){
-//         inquirer.prompt([
-//             {
-//                 type: "input",
-//                 message: "What is their ID?",
-//                 name:"id"
-//             },
-//             {
-//                 type: "input",
-//                 message: "What is their email?",
-//                 name:"email"
-//             },
-//             {
-//                 type: "input",
-//                 message: "What is their Github username?",
-//                 name:"github"
-//             },
-//         ])
-//     }
-//     if (response.teamRole === "Manager"){
-//         inquirer.prompt([
-//             {
-//                 type: "input",
-//                 message: "What is their ID?",
-//                 name:"id"
-//             },
-//             {
-//                 type: "input",
-//                 message: "What is their email?",
-//                 name:"email"
-//             },
-//             {
-//                 type: "input",
-//                 message: "What is their office number?",
-//                 name:"officeNumber"
-//             },
-//         ])
-//     }
-// })
-// repeat(); 
-// }
+function teamData (){
+inquirer.prompt([
+    {
+        type: "list",
+        message: "What is their role?",
+        name: "teamRole",
+        choices: ["Intern", "Engineer", "Manager"]
+    },
+]).then(response => {
+    if(response.teamRole === "Intern"){
+        inquirer.prompt([
+            {
+                type: "input",
+                message: "What is their ID?",
+                name:"id"
+            },
+            {
+                type: "input",
+                message: "What is their email?",
+                name:"email"
+            },
+            {
+                type: "input",
+                message: "What is their school?",
+                name:"school"
+            },
+        ]).then(response => {
+            repeat();
+        })
+    }
+    if(response.teamRole === "Engineer"){
+        inquirer.prompt([
+            {
+                type: "input",
+                message: "What is their ID?",
+                name:"id"
+            },
+            {
+                type: "input",
+                message: "What is their email?",
+                name:"email"
+            },
+            {
+                type: "input",
+                message: "What is their Github username?",
+                name:"github"
+            },
+        ]).then(response => {
+            repeat();
+        })
+    }
+    if (response.teamRole === "Manager"){
+        inquirer.prompt([
+            {
+                type: "input",
+                message: "What is their ID?",
+                name:"id"
+            },
+            {
+                type: "input",
+                message: "What is their email?",
+                name:"email"
+            },
+            {
+                type: "input",
+                message: "What is their office number?",
+                name:"officeNumber"
+            },
+        ]).then(response => {
+            repeat();
+        })
+    }
+})
+}
 
 
 
