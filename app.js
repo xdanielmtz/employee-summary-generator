@@ -8,8 +8,10 @@ const fs = require("fs");
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 const render = require("./Develop/lib/htmlRenderer");
+const { removeAllListeners } = require("process");
 
 //======================================================================
+startPrompts();
 
 function startPrompts(){
 
@@ -33,23 +35,7 @@ function startPrompts(){
             return userEngineer ();
         }
         if (response.role === "Manager"){
-            inquirer.prompt([
-                {
-                    type: "input",
-                    message: "What is your ID?",
-                    name: "id"
-                },
-                {
-                    type: "input",
-                    message: "What is your email?",
-                    name: "email"
-                },
-                {
-                    type: "input",
-                    message: "What is your office number?",
-                    name: "officeNumber"
-                }
-            ])
+            return userManager ();
         }
     })
 }
@@ -73,7 +59,9 @@ function userIntern (){
             message: "What is your school?",
             name: "school"
         }
-    ])
+    ]).then(response => {
+        return repeat();
+    })
 };
 
 function userEngineer () {
@@ -93,27 +81,51 @@ function userEngineer () {
             message: "What is your Github username?",
             name: "github"
         }
-    ])
-}
+    ]).then(response => {
+        return repeat();
+    })
+};
 
+function userManager (){
+    inquirer.prompt([
+        {
+            type: "input",
+            message: "What is your ID?",
+            name: "id"
+        },
+        {
+            type: "input",
+            message: "What is your email?",
+            name: "email"
+        },
+        {
+            type: "input",
+            message: "What is your office number?",
+            name: "officeNumber"
+        }
+    ]).then(response => {
+        return repeat();
+    })
+};
 
 //=====================================================================
-// function repeat(){
-//     inquirer.prompt([
-//         {
-//             type:"confirm",
-//             message:"Would you like to input a team members data?",
-//             name:"data"
-//         }
-//     ]).then(response => {
-//         if(response.data === true){
-//             teamData()
-//         }
-//         else if(response.data === false){
-//             console.log("Summary created!");
-//         }
-//     })
-// }
+
+function repeat(){
+    inquirer.prompt([
+        {
+            type:"confirm",
+            message:"Would you like to input a team members data?",
+            name:"data"
+        }
+    ]).then(response => {
+        if(response.data === true){
+            console.log(true);
+        }
+        else if(response.data === false){
+            console.log("Summary created!");
+        }
+    })
+};
 
 
 // function teamData (){
@@ -188,7 +200,7 @@ function userEngineer () {
 
 
 
-startPrompts();
+
 
 
 
