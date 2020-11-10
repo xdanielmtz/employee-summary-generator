@@ -10,11 +10,10 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 const render = require("./Develop/lib/htmlRenderer");
 const { removeAllListeners } = require("process");
 
-//======================================================================
+// Function that starts app.
 startPrompts();
 
 function startPrompts(){
-
     inquirer.prompt([ 
         {
             type : "input",
@@ -28,6 +27,7 @@ function startPrompts(){
             choices: ["Intern", "Engineer", "Manager"]
         }
     ]).then(response => {
+        // Depending on the user response, they will be presented with a different series of prompts. 
         if (response.role === "Intern"){
           return userIntern();
         }
@@ -40,8 +40,7 @@ function startPrompts(){
     })
 }
 
-//======================================================================
-
+// Definitions of different user roles' functions.
 function userIntern (){
     inquirer.prompt([ 
         {
