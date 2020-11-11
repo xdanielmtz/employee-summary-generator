@@ -10,6 +10,8 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 const render = require("./Develop/lib/htmlRenderer");
 const { removeAllListeners } = require("process");
 
+const theTeam = [];
+
 // Function that starts app.
 startPrompts();
 
