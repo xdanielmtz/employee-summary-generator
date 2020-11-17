@@ -58,7 +58,7 @@ Also here is my github profile, https://github.com/xdanielmtz
 
 
 ## Walk-through Vid:
-
+https://drive.google.com/file/d/1ycTSzS0afZZGxkiAjGUaoGAn_U-ro1si/view
 
 
 ## Credits 
