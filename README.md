@@ -33,10 +33,13 @@ Follow these steps to view the application!
 
 
 ## Usage 
-
-
-
-
+When opening the repo in VS Code, open the terminal. 
+You will install all dependencies required by running the command, 'npm i'
+Once that finishes, run the following command to initiate the application, 'node app.js'
+You will then be prompted with a series of questions that are very easy to follow and respond. 
+You can select any selection you wish to choose by simply using your arrow keys and hitting enter.
+When you are finished, you will go to /Develop/output/team.html. 
+Once in the team.html, you can open and see in your browser:)
 
 
 
