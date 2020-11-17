@@ -26,20 +26,20 @@
       integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
       crossorigin="anonymous"
     ></script>
-    <link rel="stylesheet" href="intern.css">
+    <link rel="stylesheet" href="../Develop/templates/intern.css">
   </head>
   <body>
     <div id="initialBox" class="card" style="width: 18rem">
-      <img src="..." class="card-img-top" alt="..." />
+      <!-- <img src="..." class="card-img-top" alt="..." /> -->
       <div class="card-body" id="mainBox">
-        <h5 class="card-title" >Daniel</h5>
+        <h5 class="card-title" >{{ name }}</h5>
         <h4>Engineer</h4>
         <i class="fas fa-glasses fa-2x"></i>
       </div>
       <ul class="list-group list-group-flush">
-        <li class="list-group-item">ID: </li>
-        <li class="list-group-item">Email: </li>
-        <li class="list-group-item">Github: <a href="https://github.com/">https://github.com/ </a> </li>
+        <li class="list-group-item">ID: {{ id }} </li>
+        <li class="list-group-item">Email: {{ email }}</li>
+        <li class="list-group-item">Github:<a href="https://github.com/{{ github }}" target="_blank"> {{ github }} </a> </li>
       </ul>
     </div>
   </body>
